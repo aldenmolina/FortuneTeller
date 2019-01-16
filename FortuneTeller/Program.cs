@@ -16,34 +16,69 @@ namespace FortuneTeller
             string vacation = "";
             string transport = "";
             string balance = "";
+            string input = "";
 
             Console.WriteLine("Let's predict your future. Tell me your first name.");
             firstName = Console.ReadLine();
+            if (firstName.Equals("Quit", StringComparison.OrdinalIgnoreCase))
+            {
+                Console.WriteLine("Nobody likes a quitter...");
+                Environment.Exit(0);
+            }
+
             Console.WriteLine("Now tell me your last name.");
             lastName = Console.ReadLine();
-            
-            
+            if (lastName.Equals("Quit", StringComparison.OrdinalIgnoreCase))
+            {
+                Console.WriteLine("Nobody likes a quitter...");
+                Environment.Exit(0);
+            }
+
             try
             {
+                
                 Console.WriteLine("What is your age?");
-                age = int.Parse(Console.ReadLine());
+                input = Console.ReadLine();
+                if (input.Equals("Quit", StringComparison.OrdinalIgnoreCase))
+                {
+                    Console.WriteLine("Nobody likes a quitter...");
+                    Environment.Exit(0);
+                }
+                age = int.Parse(input);
                 Console.WriteLine("What is your birth month (1-12)?");
-                birthMonth = int.Parse(Console.ReadLine());
+                input = Console.ReadLine();
+                if (input.Equals("Quit", StringComparison.OrdinalIgnoreCase))
+                {
+                    Console.WriteLine("Nobody likes a quitter...");
+                    Environment.Exit(0);
+                }
+                birthMonth = int.Parse(input);
                 Console.WriteLine("How many siblings do you have?");
-                numSiblings = int.Parse(Console.ReadLine());
-                    
+                input = Console.ReadLine();
+                if (input.Equals("Quit", StringComparison.OrdinalIgnoreCase))
+                {
+                    Console.WriteLine("Nobody likes a quitter...");
+                    Environment.Exit(0);
+                }
+                numSiblings = int.Parse(input);
+
             }
             catch (FormatException)
             {
-                Console.WriteLine("You're input is invalid. Try again!");        
+                Console.WriteLine("You're input is invalid. Try again!");
             }
 
-            Console.WriteLine("What is your favorite ROYGBIV color (type in lower case)? Type 'Help' for list of colors.");
+            Console.WriteLine("What is your favorite ROYGBIV color (Please type in lower case)? Type 'Help' for list of colors.");
             color = Console.ReadLine();
-            if (color.Equals("Help"))
+            while (color.Equals("Help", StringComparison.OrdinalIgnoreCase))
             {
                 Console.WriteLine("Colors are red, orange, yellow, green, blue, indigo, and violet. Enter your favorite color.");
                 color = Console.ReadLine();
+            }
+            if (color.Equals("Quit", StringComparison.OrdinalIgnoreCase))
+            {
+                Console.WriteLine("Nobody likes a quitter...");
+                Environment.Exit(0);
             }
 
             //This loop figures out the years until retirement.
@@ -129,7 +164,9 @@ namespace FortuneTeller
                 balance = "$0.00";
             }
 
-            Console.WriteLine(firstName + " " + lastName + " will retire in " + retirement + " years with " + balance + " in the bank, a vacation home in " + vacation + ", and travel by " + transport + ".");
+            Console.WriteLine(firstName + " " + lastName + " will retire in " + retirement + " years with " + balance + " in the bank,");
+            Console.WriteLine(" a vacation home in " + vacation + ", and travel by " + transport + ".");
+
         }
     }
 }
